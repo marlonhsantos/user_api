@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('api')->group(function () {
+    Route::get('user', 'UserController@get')->name('users');
+    Route::get('user/{id}', 'UserController@read')->name('user');
+    Route::put('user/{id}', 'UserController@update')->name('update_user');
+    Route::post('user', 'UserController@create')->name('create_user');
+    Route::delete('user/{id}', 'UserController@delete')->name('delete_user');
+});
